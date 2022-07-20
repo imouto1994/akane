@@ -26,6 +26,10 @@ if (process.platform === "win32") {
     "./chromium-mac/mac-1011831/chrome-mac/Chromium.app/Contents/MacOS/Chromium"
   );
 }
+
+const futureDate = Date.UTC(2050, 0);
+const dateDigits = String(futureDate).length;
+
 console.log("CHROMIUM PATH", chromiumPath);
 
 function parseDataUrl(dataUrl) {
@@ -122,9 +126,16 @@ async function scrape(url) {
         if (url.startsWith("https://books.fakku.net/hentai/")) {
           const json = await response.json();
           numImages = json.content.content_pages;
+          const dateDiff = String(futureDate - Date.now()).padStart(
+            dateDigits,
+            "0"
+          );
           folderPath = path.join(
             process.cwd(),
-            `./dist/${json.content.content_name.replace(/[/\\?%*:|"<>]/g, "-")}`
+            `./dist/${dateDiff} - ${json.content.content_name.replace(
+              /[/\\?%*:|"<>]/g,
+              "-"
+            )}`
           );
           await fsPromises.mkdir(folderPath, { recursive: true });
           resolve();
