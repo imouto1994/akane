@@ -1,3 +1,9 @@
 node_modules/
 dist/
 .DS_Store
+config.json
+urls.json
+chromium-mac
+chromium-win
+akane.exe
+akane.zip
