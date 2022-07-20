@@ -1,0 +1,2 @@
+akane.exe
+pause

@@ -26,6 +26,7 @@ if (process.platform === "win32") {
     "./chromium-mac/mac-1011831/chrome-mac/Chromium.app/Contents/MacOS/Chromium"
   );
 }
+console.log("CHROMIUM PATH", chromiumPath);
 
 function parseDataUrl(dataUrl) {
   const matches = dataUrl.match(/^data:(.+);base64,(.+)$/);
@@ -61,6 +62,7 @@ async function scrape(url) {
       "--disable-features=IsolateOrigins",
       " --disable-site-isolation-trials",
     ],
+    executablePath: chromiumPath,
   });
   const page = await browser.newPage();
 
