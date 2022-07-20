@@ -6,7 +6,7 @@
   "author": "imouto1994 <nhan.bui@foodpanda.com>",
   "license": "MIT",
   "scripts": {
-    "build-script": "pkg ./main.js -c pkg-akane.json -o akane && node zip.js"
+    "build-script": "pkg ./main.js -c pkg-akane.json --public -o akane && node zip.js"
   },
   "dependencies": {
     "puppeteer": "15.4.0"

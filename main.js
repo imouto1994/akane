@@ -124,7 +124,7 @@ async function scrape(url) {
           numImages = json.content.content_pages;
           folderPath = path.join(
             process.cwd(),
-            `./dist/${json.content.content_name}`
+            `./dist/${json.content.content_name.replace(/[/\\?%*:|"<>]/g, "-")}`
           );
           await fsPromises.mkdir(folderPath, { recursive: true });
           resolve();
